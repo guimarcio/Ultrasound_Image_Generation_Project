@@ -17,7 +17,7 @@ The project focused on applying DSP techniques such as:
 
 * Medical image visualization
 
-I created a video explaining the concepts of DSP and Acoustics in Ultrasonography and the project: https://www.youtube.com/watch?v=TnqUQ18_V8o
+I created a video (in portuguese) explaining the concepts of DSP and Acoustics in Ultrasonography and the project: https://www.youtube.com/watch?v=TnqUQ18_V8o
 
 ## 📁 Dataset
 
