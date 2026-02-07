@@ -23,7 +23,7 @@ I created a video explaining the concepts of DSP and Acoustics in Ultrasonograph
 
 ## 📁 Dataset
 
-The [dataset](https://bluebox.ippt.gov.pl/~hpiotrzk/download.html) consists of RF ultrasound data from 100 anonymized patients diagnosed with breast tumors, including both benign and malignant cases. The dataset is officially anonymized. 
+The dataset can be found in https://bluebox.ippt.gov.pl/~hpiotrzk/download.html. It consists of RF ultrasound data from 100 anonymized patients diagnosed with breast tumors, including both benign and malignant cases. The dataset is officially anonymized. 
 The table below show the fields and the explanation for each.
 
 
