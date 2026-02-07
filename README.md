@@ -64,31 +64,49 @@ Breast Imaging Reporting and Data System (BI-RADS) is a classification system fo
 
 * Aperture width: 38 mm
 
-### 🔢 Steps
+🔢 Steps
 
 The main processing steps applied to the RF data:
 
-* Depth axis calculation based on sampling frequency and speed of sound. One RF signal is showed below:
+* Depth axis calculation based on sampling frequency and speed of sound. The depth axis was computed using the speed of sound in soft tissue (1540 m/s) and the sampling frequency (40 MHz). This conversion transforms time-domain RF signals into spatial depth information (in millimeters), allowing proper anatomical interpretation of the ultrasound data. One RF signal is shown below:
 
-![]()
+<p align="center">
+  <img src="/Images/1rf.png" width="400">
+</p>
 
-* Hilbert Transform was used to compute the analytic signal.
+* Hilbert Transform was used to compute the analytic signal. The Hilbert Transform generates the analytic representation of the RF signal, separating amplitude and phase information. This step is fundamental for envelope detection, which mimics how real ultrasound systems reconstruct image intensity.
 
-![]()
+* Envelope calculation generated the absolute value of the analytic signal, also known as A-mode. The envelope corresponds to the magnitude of the analytic signal and represents the instantaneous amplitude of the reflected ultrasound wave. This step removes high-frequency oscillations while preserving structural information from tissue interfaces.
 
-* Envelope Detection generated the absolute value of analytic signal, as known as A-mode.
+<p align="center">
+  <img src="/Images/2hilbert.png" width="400">
+</p>
 
-![]()
+* Log Compression converting the signal to decibel (dB) scale. Ultrasound RF signals have a very large dynamic range. Logarithmic compression converts the envelope into a decibel scale, reducing dynamic range and improving contrast, which makes anatomical structures and lesions visually distinguishable.
 
-* Log Compression to conversion to decibel (dB) scale.
+<p align="center">
+  <img src="/Images/3loghilbert.png" width="400">
+</p>
 
-![]()
+* Image Visualization using a grayscale colormap, also known as B-mode. The log-compressed envelope is displayed as a B-mode image.
+Left: Benign tumor.
+Right: Malignant tumor.
+Visual differences can be observed in lesion shape, boundary definition, and internal texture. Malignant lesions tend to present more irregular contours and heterogeneous internal patterns compared to benign ones.
 
-* Image Visualization using grayscale colormap, as know as B-mode.
+<p align="center">
+  <img src="/Images/4modoB.png" width="400"> <img src="/Images/5modoBm.png" width="400">
+</p>
 
-![]()
+* ROI Masking to isolate the lesion region. The Region of Interest (ROI) mask isolates the tumor area for focused analysis.
+Left: Benign tumor ROI.
+Right: Malignant tumor ROI.
 
-* ROI Masking to isolate the lesion region.
+This step enables quantitative feature extraction restricted to the lesion, which is essential for future classification models and comparative studies between benign and malignant cases.
 
-![]()
+<p align="center">
+  <img src="/Images/4.1modoBtum.png" width="400"> <img src="/Images/5.1modoBtuma.png" width="400">
+</p>
 
+## 💭 Conclusions
+
+This project demonstrates how fundamental DSP techniques transform raw ultrasound RF signals into clinically meaningful images. The implemented pipeline replicates core steps used in real ultrasound systems and establishes a solid foundation for future lesion classification using machine learning.
