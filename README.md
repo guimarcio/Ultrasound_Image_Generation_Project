@@ -19,6 +19,23 @@ The project focused on applying DSP techniques such as:
 
 I created a video (in portuguese) explaining the concepts of DSP and Acoustics in Ultrasonography and the project: https://www.youtube.com/watch?v=TnqUQ18_V8o
 
+## ▶️ How to Run
+
+1. Clone the repository:
+   git clone <[repo-link](https://github.com/guimarcio/Ultrasound_Image_Generation_Project)>
+
+2. Download the dataset <[dataset](https://bluebox.ippt.gov.pl/~hpiotrzk/download.html)>
+
+3. Install dependencies:
+   pip install -r requirements.txt
+
+4. Open the Jupyter Notebook:
+   jupyter notebook
+
+5. Run the notebook file.
+
+6. Change the path in the script to access the dataset folder.
+
 ## 📁 Dataset
 
 The dataset can be found in https://bluebox.ippt.gov.pl/~hpiotrzk/download.html. It consists of RF ultrasound data from 100 anonymized patients diagnosed with breast tumors, including both benign and malignant cases. The dataset is officially anonymized. 
