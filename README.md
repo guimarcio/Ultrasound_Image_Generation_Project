@@ -21,9 +21,10 @@ The project focused on applying DSP techniques such as:
 
 I created a video explaining the concepts of DSP and Acoustics in Ultrasonography and the project: https://www.youtube.com/watch?v=TnqUQ18_V8o
 
-## Dataset
+## 📁 Dataset
 
-The [dataset](https://bluebox.ippt.gov.pl/~hpiotrzk/download.html) has 
+The [dataset](https://bluebox.ippt.gov.pl/~hpiotrzk/download.html) consists of RF ultrasound data from 100 anonymized patients diagnosed with breast tumors, including both benign and malignant cases. The dataset is officially anonymized. 
+The table below show the fields and the explanation for each.
 
 
 
@@ -34,10 +35,15 @@ The [dataset](https://bluebox.ippt.gov.pl/~hpiotrzk/download.html) has
 | **rf2**    | Image (RF matrix)  | Second ultrasound scan plane (raw radiofrequency data)                |
 | **roi1**   | Mask / Coordinates | Region of Interest (ROI) corresponding to the first scan plane (rf1)  |
 | **roi2**   | Mask / Coordinates | Region of Interest (ROI) corresponding to the second scan plane (rf2) |
-| **Birads** | Integer (1–6)      | BI-RADS category assigned to the exam                                 |
+| **BI-RADS** | Integer (1–6)      | BI-RADS category assigned to the exam                                 |
 | **Class**  | Binary (0 or 1)    | Lesion class label: 0 = Benign, 1 = Malignant                         |
 
+The RF matrix consisted of many RF lines informing the variations of acoustic impedance (different tissues). 
+
 #### BI-RADS
+
+Breast Imaging Reporting and Data System (BI-RADS) is a classification system for breast imaging exams (mammography, ultrasound, and MRI) that standardizes radiology reports, communicates cancer risk, and guides clinical management decisions. It uses categories from 0 to 6 to indicate benign findings (0–2), suspicious findings (3–4), or malignant findings (5–6).
+
 | Category | Meaning                         | Malignancy Risk | Typical Recommendation      |
 | -------- | ------------------------------- | --------------- | --------------------------- |
 | **0**    | Incomplete                      | —               | Additional imaging needed   |
@@ -48,18 +54,41 @@ The [dataset](https://bluebox.ippt.gov.pl/~hpiotrzk/download.html) has
 | **5**    | Highly suggestive of malignancy | >95%            | Biopsy strongly recommended |
 | **6**    | Known biopsy-proven malignancy  | ~100%           | Treatment planning          |
 
-⚙️ Signal Processing Pipeline
+## ⚙️ Signal Processing Pipeline
+
+### 🔩 Key Parameters
+
+* Speed of sound: 1540 m/s
+
+* Sampling frequency: 40 MHz
+
+* Aperture width: 38 mm
+
+### 🔢 Steps
 
 The main processing steps applied to the RF data:
 
-* Depth axis calculation based on sampling frequency and speed of sound.
+* Depth axis calculation based on sampling frequency and speed of sound. One RF signal is showed below:
+
+![]()
 
 * Hilbert Transform was used to compute the analytic signal.
 
+![]()
+
 * Envelope Detection generated the absolute value of analytic signal, as known as A-mode.
+
+![]()
 
 * Log Compression to conversion to decibel (dB) scale.
 
-* ROI Masking to isolate the lesion region.
+![]()
 
 * Image Visualization using grayscale colormap, as know as B-mode.
+
+![]()
+
+* ROI Masking to isolate the lesion region.
+
+![]()
+
