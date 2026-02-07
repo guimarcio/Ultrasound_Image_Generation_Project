@@ -9,9 +9,7 @@ The goal was to transform raw RF signals into interpretable ultrasound images, h
 
 The project focused on applying DSP techniques such as:
 
-* Hilbert Transform
-
-* Envelope detection
+* Hilbert Transform and envelope calculation
 
 * Log compression (dB scale)
 
